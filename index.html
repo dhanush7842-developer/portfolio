@@ -1,869 +1,618 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M. Dhanush | AI & ML Engineer</title>
-    <meta
-      name="description"
-      content="Portfolio of M. Dhanush, AI & ML undergraduate building practical, data-driven products."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #f4f9fc;
-        --panel: #ffffff;
-        --panel-soft: #edf7fc;
-        --ink: #12374a;
-        --ink-strong: #0c2737;
-        --muted: #536d7d;
-        --line: rgba(18, 55, 74, 0.14);
-        --accent: #0f9ad0;
-        --accent-strong: #0a7da8;
-        --accent-soft: #dff5ff;
-        --success: #17a66a;
-        --shadow: rgba(8, 53, 73, 0.08);
-      }
-
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        font-family: "DM Sans", sans-serif;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.6;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      .container {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(255,255,255,0.35);
-        color: var(--ink);
-        font: 600 10px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .eyebrow::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--success);
-        box-shadow: 0 0 0 5px rgba(23, 166, 106, 0.12);
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        background: rgba(244, 249, 252, 0.8);
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--line);
-      }
-
-      .header-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 72px;
-      }
-
-      .brand {
-        font-size: 1.4rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-      }
-
-      .brand span {
-        color: var(--accent);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-      }
-
-      .nav a {
-        color: var(--muted);
-        font: 600 11px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        transition: color 0.2s ease;
-      }
-
-      .nav a:hover {
-        color: var(--accent);
-      }
-
-      .hero {
-        padding: 86px 0 60px;
-      }
-
-      .hero-inner {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-        gap: 48px;
-      }
-
-      .hero-copy h1 {
-        margin: 24px 0 18px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(2.8rem, 5vw, 5rem);
-        line-height: 0.96;
-        letter-spacing: -0.07em;
-        color: var(--ink-strong);
-      }
-
-      .hero-copy h1 .highlight {
-        position: relative;
-        display: inline-block;
-        padding: 0 0.15em;
-      }
-
-      .hero-copy h1 .highlight::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0.05em;
-        height: 0.3em;
-        background: rgba(15, 154, 208, 0.18);
-        z-index: -1;
-      }
-
-      .hero-copy p {
-        margin: 0;
-        max-width: 620px;
-        color: var(--muted);
-        font-size: clamp(1.06rem, 1.8vw, 1.22rem);
-      }
-
-      .hero-meta {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 30px;
-        color: var(--muted);
-        font: 500 13px "IBM Plex Mono", monospace;
-        letter-spacing: 0.04em;
-      }
-
-      .hero-meta .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--accent);
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-top: 28px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        min-height: 48px;
-        padding: 0 22px;
-        border-radius: 14px;
-        border: 1px solid transparent;
-        font-weight: 700;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      }
-
-      .btn:hover {
-        transform: translateY(-1px);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-        color: #fff;
-        box-shadow: 0 12px 26px rgba(15, 154, 208, 0.23);
-      }
-
-      .btn-primary:hover {
-        box-shadow: 0 14px 28px rgba(15, 154, 208, 0.28);
-      }
-
-      .btn-secondary {
-        border-color: rgba(18, 55, 74, 0.18);
-        background: rgba(255,255,255,0.45);
-        color: var(--ink);
-      }
-
-      .hero-card {
-        position: relative;
-        padding: 22px;
-        background: linear-gradient(180deg, #ffffff 0%, #f1f9ff 100%);
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        box-shadow: 0 24px 60px var(--shadow);
-      }
-
-      .mini-panel {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 20px;
-      }
-
-      .mini-panel + .mini-panel {
-        margin-top: 18px;
-      }
-
-      .chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6px 10px;
-        background: var(--panel-soft);
-        border: 1px solid rgba(15, 154, 208, 0.18);
-        border-radius: 999px;
-        color: var(--ink);
-        font: 600 11px "IBM Plex Mono", monospace;
-      }
-
-      .hero-card h3 {
-        margin: 0 0 8px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(1.5rem, 2vw, 2rem);
-      }
-
-      .hero-card p {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      section {
-        padding: 40px 0 24px;
-      }
-
-      .section-head {
-        margin-bottom: 26px;
-      }
-
-      .section-head h2 {
-        margin: 0;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        letter-spacing: -0.06em;
-        color: var(--ink-strong);
-      }
-
-      .section-head h2 .accent {
-        color: var(--accent);
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 0.85fr 1.15fr;
-        gap: 32px;
-        align-items: center;
-      }
-
-      .portrait {
-        border-radius: 28px;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        box-shadow: 0 22px 44px var(--shadow);
-      }
-
-      .portrait img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .about-copy {
-        padding: 18px 0;
-      }
-
-      .about-copy h3 {
-        margin: 0 0 18px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(1.8rem, 3vw, 2.7rem);
-        line-height: 1.1;
-        letter-spacing: -0.06em;
-      }
-
-      .about-copy p {
-        margin: 0 0 18px;
-        color: var(--muted);
-        font-size: 1.04rem;
-      }
-
-      .info-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-
-      .info-list span {
-        padding: 7px 12px;
-        background: rgba(255,255,255,0.5);
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        font: 600 11px "IBM Plex Mono", monospace;
-        color: var(--muted);
-      }
-
-      .work-list {
-        display: grid;
-        gap: 18px;
-      }
-
-      .work-item {
-        padding: 24px 22px;
-        background: rgba(255,255,255,0.7);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-      }
-
-      .work-item h3 {
-        margin: 0 0 6px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 1.6rem;
-      }
-
-      .meta {
-        margin: 0 0 14px;
-        color: var(--muted);
-        font: 600 11px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .work-item ul {
-        margin: 0;
-        padding-left: 18px;
-        color: var(--muted);
-      }
-
-      .work-item li + li {
-        margin-top: 8px;
-      }
-
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .project-card {
-        padding: 24px;
-        background: rgba(255,255,255,0.7);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .project-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 40px rgba(18,55,74,0.08);
-      }
-
-      .project-card .num {
-        display: block;
-        margin-bottom: 12px;
-        color: var(--accent);
-        font: 700 11px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-      }
-
-      .project-card h3 {
-        margin: 0 0 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 1.6rem;
-      }
-
-      .project-card p {
-        margin: 0 0 16px;
-        color: var(--muted);
-      }
-
-      .stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 16px;
-      }
-
-      .stack span {
-        padding: 5px 9px;
-        border-radius: 999px;
-        border: 1px solid rgba(18,55,74,0.12);
-        background: rgba(15,154,208,0.04);
-        font: 600 10px "IBM Plex Mono", monospace;
-        text-transform: uppercase;
-        color: var(--ink);
-      }
-
-      .project-link {
-        font: 700 11px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--accent-strong);
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .skill-card {
-        padding: 24px;
-        background: rgba(255,255,255,0.72);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-      }
-
-      .skill-card .num {
-        display: inline-block;
-        margin-bottom: 12px;
-        color: var(--accent);
-        font: 700 11px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-      }
-
-      .skill-card h3 {
-        margin: 0 0 14px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 1.45rem;
-      }
-
-      .skill-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .skill-pills span {
-        padding: 7px 10px;
-        border: 1px solid rgba(18,55,74,0.12);
-        border-radius: 999px;
-        background: rgba(15,154,208,0.04);
-        font: 600 11px "IBM Plex Mono", monospace;
-        color: var(--muted);
-      }
-
-      .contact-box {
-        background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(237,247,252,0.9));
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        padding: clamp(22px, 3vw, 34px);
-        box-shadow: 0 24px 54px rgba(18,55,74,0.08);
-      }
-
-      .contact-layout {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 28px;
-        align-items: center;
-      }
-
-      .contact-layout h3 {
-        margin: 0 0 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        line-height: 1.05;
-        letter-spacing: -0.06em;
-      }
-
-      .contact-layout p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 1.05rem;
-      }
-
-      .cta-panel {
-        padding: 24px 20px;
-        border: 1px solid rgba(15,154,208,0.2);
-        background: rgba(15,154,208,0.06);
-        border-radius: 22px;
-      }
-
-      .cta-panel h4 {
-        margin: 0 0 10px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 1.7rem;
-      }
-
-      .cta-panel p {
-        margin: 0 0 18px;
-        color: var(--muted);
-      }
-
-      .cta-button {
-        width: 100%;
-      }
-
-      .site-footer {
-        padding: 26px 0 38px;
-        color: var(--muted);
-        font: 600 11px "IBM Plex Mono", monospace;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        border-top: 1px solid var(--line);
-        padding-top: 18px;
-      }
-
-      @media (max-width: 860px) {
-        .hero-inner,
-        .about-grid,
-        .contact-layout,
-        .projects-grid,
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .nav {
-          display: none;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .hero {
-          padding-top: 64px;
-        }
-
-        .hero-actions {
-          flex-direction: column;
-        }
-
-        .btn {
-          width: 100%;
-        }
-
-        .footer-inner {
-          flex-direction: column;
-        }
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M. Dhanush — AI & ML Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ---- Reset & base ---- */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      color-scheme: light;
+      font-family: "DM Sans", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #f4faff;
+      color: #142b3b;
+      font-weight: 400;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { min-width: 320px; min-height: 100vh; margin: 0; background: #f4faff; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #168dc5; color: #ffffff; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ---- Design tokens (Shiva’s exact palette) ---- */
+    .site {
+      --canvas: #f7fafc;
+      --surface: #ffffff;
+      --surface-alt: #e9f6fc;
+      --ink: #12374a;
+      --text: #203a49;
+      --muted: #496577;
+      --subtle: #5d7b8c;
+      --accent: #078fc5;
+      --accent-soft: #bfeafa;
+      --accent-contrast: #ffffff;
+      --line: #1c6689;
+      --shadow: #9ccddd;
+      min-height: 100vh;
+      overflow: clip;
+      background: var(--canvas);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .site * { box-sizing: border-box; }
+    .site a { color: inherit; text-decoration: none; }
+    .site button, .site a { -webkit-tap-highlight-color: transparent; }
+
+    /* ---- Layout shells ---- */
+    .nav-shell, .content-shell, .site-footer {
+      width: min(100% - 64px, 1180px);
+      margin-inline: auto;
+    }
+    .nav-shell {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 28px;
+    }
+
+    /* ---- Header ---- */
+    .site-header {
+      position: sticky; z-index: 20; top: 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 35%, transparent);
+      background: color-mix(in srgb, var(--canvas) 94%, transparent);
+      backdrop-filter: blur(14px);
+    }
+    .wordmark {
+      flex: 0 0 auto;
+      color: var(--ink) !important;
+      font-family: "DM Sans", sans-serif;
+      font-size: 20px; font-weight: 800; letter-spacing: 0;
+    }
+    .wordmark span { color: var(--accent); }
+    .desktop-nav { display: flex; align-items: center; gap: 25px; }
+    .desktop-nav > a {
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 10px; font-weight: 500;
+      text-transform: uppercase;
+      transition: color 0.18s ease;
+    }
+    .desktop-nav > a:hover { color: var(--accent); }
+    .mobile-nav-actions { display: none; }
+    .menu-toggle {
+      border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+      border-radius: 2px; padding: 9px 12px;
+      background: var(--surface); color: var(--text);
+      font: 500 11px "IBM Plex Mono", monospace;
+      cursor: pointer;
+    }
+
+    /* ---- Hero (exact Shiva replica) ---- */
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(760px, calc(100svh - 66px));
+      min-height: max(570px, min(760px, calc(100svh - 66px)));
+      place-items: center;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      padding: 76px 24px 100px;
+      text-align: center;
+    }
+    .hero-content { position: relative; z-index: 1; width: min(100%, 820px); }
+    .availability {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin: 0 0 24px;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      color: var(--text);
+      font: 500 10px "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+    }
+    .availability span { width: 7px; height: 7px; background: var(--accent); }
+    .hero-intro { margin: 0 0 2px; color: var(--muted); font-size: 20px; }
+    .hero h1 {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 64px; font-weight: 700; line-height: 1.12;
+    }
+    .hero h1 span { background: linear-gradient(transparent 72%, var(--accent-soft) 72%); }
+    .hero-role {
+      max-width: 470px;
+      margin: 17px auto 0;
+      color: var(--muted);
+      font-size: 16px; line-height: 1.7;
+    }
+    .hero-location {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      margin: 38px 0 0;
+      color: var(--subtle);
+      font: 11px "IBM Plex Mono", monospace;
+    }
+    .hero-location > span { color: var(--accent); font-size: 16px; }
+    .hero-location i { width: 3px; height: 3px; border-radius: 50%; background: var(--subtle); }
+    .hero-actions { display: flex; justify-content: center; gap: 12px; margin-top: 26px; }
+    .button {
+      display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 9px;
+      border: 1px solid var(--ink); border-radius: 2px;
+      padding: 0 17px;
+      font-size: 12px; font-weight: 700;
+      transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+    }
+    .button:hover { transform: translate(-1px, -1px); }
+    .button-primary { background: var(--ink); color: var(--canvas) !important; }
+    .button-primary:hover { border-color: var(--accent); background: var(--accent); color: var(--accent-contrast) !important; }
+    .button-outline { background: transparent; color: var(--ink) !important; }
+    .button-outline:hover { background: var(--surface-alt); }
+
+    /* ---- Sections ---- */
+    .section { padding: 76px 0 86px; }
+    .section-ruled { border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+    .section-title {
+      margin: 0 0 48px;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 34px; font-weight: 700; line-height: 1.2;
+      text-align: center;
+    }
+
+    /* ---- About ---- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.15fr);
+      align-items: center;
+      gap: clamp(42px, 8vw, 100px);
+      max-width: 920px; margin: 0 auto;
+    }
+    .portrait-frame {
+      width: min(100%, 340px);
+      aspect-ratio: 1 / 1.03;
+      border: 4px solid var(--ink);
+      background: var(--surface-alt);
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+    .portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
+    .contact-details > h3 {
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 32px; line-height: 1.2;
+    }
+    .contact-details > p { max-width: 590px; margin: 0 0 24px; color: var(--muted); font-size: 17px; line-height: 1.65; }
+    .language-list { display: flex; gap: 8px; margin: 0 0 24px; flex-wrap: wrap; }
+    .language-list span {
+      border: 1px solid var(--line);
+      padding: 4px 10px;
+      font: 500 11px "IBM Plex Mono", monospace;
+      color: var(--muted);
+    }
+
+    /* ---- Work Experience ---- */
+    .work-grid { display: grid; grid-template-columns: 140px 1fr; gap: 24px; max-width: 920px; margin: 0 auto; }
+    .work-label { font: 500 11px "IBM Plex Mono", monospace; color: var(--subtle); text-transform: uppercase; padding-top: 6px; }
+    .work-item { margin-bottom: 40px; padding-left: 24px; border-left: 2px solid var(--accent-soft); }
+    .work-item h3 { margin: 0 0 4px; font-family: "Space Grotesk", sans-serif; font-size: 22px; color: var(--ink); }
+    .work-meta { margin: 0 0 12px; font: 500 11px "IBM Plex Mono", monospace; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.04em; }
+    .work-item ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .work-item li { margin-bottom: 6px; }
+
+    /* ---- Education ---- */
+    .edu-list { max-width: 720px; margin: 0 auto; }
+    .edu-item {
+      display: grid; grid-template-columns: 40px 1fr; gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 30%, transparent);
+    }
+    .edu-number { font: 500 12px "IBM Plex Mono", monospace; color: var(--accent); padding-top: 3px; }
+    .edu-item h3 { margin: 0 0 2px; font-family: "Space Grotesk", sans-serif; font-size: 19px; color: var(--ink); }
+    .edu-item p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    /* ---- Projects ---- */
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+    .project-card {
+      border: 1px solid color-mix(in srgb, var(--line) 40%, transparent);
+      background: var(--surface);
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .project-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+    .project-number { font: 500 11px "IBM Plex Mono", monospace; color: var(--accent); margin-bottom: 12px; display: block; }
+    .project-card h3 { margin: 0 0 10px; font-family: "Space Grotesk", sans-serif; font-size: 22px; color: var(--ink); }
+    .project-card p { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .stack span {
+      border: 1px solid color-mix(in srgb, var(--line) 40%, transparent);
+      padding: 3px 9px;
+      font: 500 10px "IBM Plex Mono", monospace;
+      color: var(--subtle);
+      text-transform: uppercase;
+    }
+    .project-link { font: 500 11px "IBM Plex Mono", monospace; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* ---- Skills ---- */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 960px; margin: 0 auto; }
+    .skill-group {
+      border: 1px solid color-mix(in srgb, var(--line) 35%, transparent);
+      padding: 24px 22px;
+      background: var(--surface);
+    }
+    .skill-number { font: 500 11px "IBM Plex Mono", monospace; color: var(--accent); margin-bottom: 8px; display: block; }
+    .skill-group h3 { margin: 0 0 14px; font-family: "Space Grotesk", sans-serif; font-size: 20px; color: var(--ink); }
+    .pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill-list span {
+      border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+      padding: 5px 12px;
+      font: 500 11px "IBM Plex Mono", monospace;
+      color: var(--muted);
+    }
+
+    /* ---- Highlights ---- */
+    .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+    .highlight-item {
+      text-align: center;
+      padding: 24px 16px;
+      border: 1px solid color-mix(in srgb, var(--line) 30%, transparent);
+      background: var(--surface);
+    }
+    .highlight-number { font: 600 12px "IBM Plex Mono", monospace; color: var(--accent); margin-bottom: 8px; display: block; }
+    .highlight-item h3 { margin: 0 0 6px; font-family: "Space Grotesk", sans-serif; font-size: 18px; color: var(--ink); }
+    .highlight-item p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+    /* ---- Contact ---- */
+    .contact-block { max-width: 720px; margin: 0 auto; text-align: center; }
+    .contact-block h3 { margin: 0 0 12px; font-family: "Space Grotesk", sans-serif; font-size: 32px; color: var(--ink); }
+    .contact-block > p { margin: 0 0 28px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+    .contact-links a {
+      border: 1px solid var(--line);
+      padding: 10px 18px;
+      font: 500 11px "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    .contact-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ---- Footer ---- */
+    .site-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 0;
+      font: 500 11px "IBM Plex Mono", monospace;
+      color: var(--subtle);
+      border-top: 1px solid color-mix(in srgb, var(--line) 35%, transparent);
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .desktop-nav { display: none; }
+      .mobile-nav-actions { display: flex; align-items: center; }
+      .about-grid, .work-grid, .skills-grid, .project-grid, .highlights-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 42px; }
+      .section-title { font-size: 28px; }
+    }
+    @media (max-width: 480px) {
+      .nav-shell, .content-shell, .site-footer { width: min(100% - 32px, 1180px); }
+      .hero h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#top">Dhanush<span>.</span></a>
-        <nav class="nav" aria-label="Main navigation">
+      <div class="nav-shell">
+        <a class="wordmark" href="#">Dhanush<span>.</span></a>
+        <nav class="desktop-nav">
           <a href="#about">About</a>
-          <a href="#experience">Experience</a>
+          <a href="#work">Work</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </nav>
+        <div class="mobile-nav-actions">
+          <button class="menu-toggle" id="menuToggle">Menu</button>
+        </div>
       </div>
     </header>
 
-    <main id="top">
+    <main>
+      <!-- HERO -->
       <section class="hero">
-        <div class="container hero-inner">
-          <div class="hero-copy">
-            <span class="eyebrow">Open to opportunities</span>
-            <h1>
-              Hi, I’m <span class="highlight">M. Dhanush</span>
-            </h1>
-            <p>
-              AI &amp; ML undergraduate building practical, data-driven products that help people
-              make better decisions with intelligent systems.
-            </p>
-            <div class="hero-meta">
-              <span class="dot"></span>
-              Hyderabad, India · B.Tech AI &amp; ML
-            </div>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
-              <a class="btn btn-secondary" href="#contact">Get in Touch</a>
-            </div>
-          </div>
-
-          <div class="hero-card" aria-label="Profile overview card">
-            <div class="mini-panel">
-              <h3>AI &amp; ML Engineer</h3>
-              <p>Focused on machine learning, analytics, and full-stack product development.</p>
-            </div>
-            <div class="mini-panel">
-              <div class="chip-row">
-                <span class="chip">Python</span>
-                <span class="chip">ML</span>
-                <span class="chip">NLP</span>
-                <span class="chip">Java</span>
-                <span class="chip">SQL</span>
-              </div>
-            </div>
+        <div class="hero-content">
+          <p class="availability"><span></span> Open to opportunities</p>
+          <p class="hero-intro">Hi, I’m</p>
+          <h1><span>M. Dhanush</span></h1>
+          <p class="hero-role">
+            AI &amp; ML undergraduate building intelligent, data-driven products.
+          </p>
+          <p class="hero-location">
+            <span>⌖</span> Hyderabad, India <i></i> B.Tech AI &amp; ML
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
+            <a class="button button-outline" href="#contact">Get in Touch</a>
           </div>
         </div>
       </section>
 
-      <section id="about">
-        <div class="container">
-          <div class="section-head">
-            <h2>About <span class="accent">Me</span></h2>
-          </div>
+      <!-- ABOUT -->
+      <section class="section section-ruled" id="about">
+        <div class="content-shell">
+          <h2 class="section-title">About <span>Me</span></h2>
           <div class="about-grid">
-            <div class="portrait">
+            <div class="portrait-frame">
               <img src="https://avatars.githubusercontent.com/u/233436838?v=4" alt="M. Dhanush" />
             </div>
-            <div class="about-copy">
-              <h3>Building useful AI products with a practical mindset.</h3>
+            <div class="contact-details">
+              <h3>AI &amp; ML undergraduate focused on useful products.</h3>
               <p>
-                I’m a B.Tech AI &amp; ML student at Anurag University, Hyderabad, with hands-on experience
-                in machine learning, full-stack development, and AI-powered analytics. Through internships
-                at Kodbud and EduSkills, and a Forage simulation with Tata Group, I’ve worked on predictive
-                modeling, backend systems, and data-driven applications that solve real-world problems.
+                I’m a B.Tech AI &amp; ML student at Anurag University, Hyderabad, with hands-on
+                experience across machine learning, full-stack development, and AI-powered
+                data analytics. Through internships at Kodbud and EduSkills, and a simulation
+                with Tata Group (Forage), I’ve worked on predictive modeling, enterprise
+                backends, and GenAI analytics pipelines. I’m driven by turning complex data
+                into meaningful, real-world applications.
               </p>
-              <p>
-                I enjoy turning complex ideas into simple, useful products that are clear, reliable, and
-                valuable to people.
-              </p>
-              <div class="info-list">
+              <div class="language-list">
                 <span>English</span>
                 <span>Telugu</span>
                 <span>Hindi</span>
               </div>
-              <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
+              <a class="button button-primary" href="resume.pdf" target="_blank" rel="noopener">View Resume</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="experience">
-        <div class="container">
-          <div class="section-head">
-            <h2>Work <span class="accent">Experience</span></h2>
-          </div>
-          <div class="work-list">
-            <article class="work-item">
-              <h3>Machine Learning Intern</h3>
-              <p class="meta">Kodbud · AICTE Approved · Mar 2026 – Apr 2026</p>
-              <ul>
-                <li>Worked on practical ML tasks with a focus on predictive modeling and data analysis.</li>
-                <li>Applied machine learning techniques to understand patterns and improve decision-making.</li>
-              </ul>
-            </article>
-
-            <article class="work-item">
-              <h3>Java Full Stack Developer Intern</h3>
-              <p class="meta">EduSkills · AICTE · Jan 2026 – Mar 2026</p>
-              <ul>
-                <li>Built responsive web interfaces using HTML, CSS, JavaScript, jQuery, and Bootstrap.</li>
-                <li>Developed backend systems with Core Java, Spring Boot, Hibernate, and MySQL.</li>
-                <li>Worked on complete full-stack application development with version control and structured code.</li>
-              </ul>
-            </article>
-
-            <article class="work-item">
-              <h3>GenAI Data Analytics Job Simulation</h3>
-              <p class="meta">Tata Group · Forage · May 2026</p>
-              <ul>
-                <li>Used GenAI tools for exploratory data analysis and prediction-based insights.</li>
-                <li>Contributed to data-led strategies for smarter collections and business decision support.</li>
-              </ul>
-            </article>
+      <!-- WORK EXPERIENCE -->
+      <section class="section section-ruled" id="work">
+        <div class="content-shell">
+          <h2 class="section-title">Work <span>Experience</span></h2>
+          <div class="work-grid">
+            <div class="work-label">Internships</div>
+            <div>
+              <div class="work-item">
+                <h3>Machine Learning Intern</h3>
+                <p class="work-meta">Kodbud · AICTE Approved · Mar 2026 – Apr 2026</p>
+                <ul>
+                  <li>Completed a 4-week structured internship gaining hands-on exposure to ML tasks.</li>
+                  <li>Contributed to predictive modeling and applied ML algorithms to analyze data patterns effectively.</li>
+                </ul>
+              </div>
+              <div class="work-item">
+                <h3>Java Full Stack Developer Intern</h3>
+                <p class="work-meta">EduSkills · AICTE · Jan 2026 – Mar 2026</p>
+                <ul>
+                  <li>Completed a comprehensive 10-week program mastering full-stack web application development.</li>
+                  <li>Designed responsive web interfaces using HTML, CSS, JavaScript, jQuery, and Bootstrap.</li>
+                  <li>Developed enterprise-level backend architectures utilizing Core/Advanced Java, Spring Boot, and Hibernate ORM.</li>
+                  <li>Implemented persistent data storage solutions with MySQL and managed source code via Git.</li>
+                </ul>
+              </div>
+              <div class="work-item">
+                <h3>GenAI Data Analytics Job Simulation</h3>
+                <p class="work-meta">Tata Group · Forage · May 2026</p>
+                <ul>
+                  <li>Utilized GenAI tools for exploratory data analysis (EDA) and predictive modeling for the Tata iQ team.</li>
+                  <li>Contributed to the development of an AI-driven collections strategy based on data insights.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="projects">
-        <div class="container">
-          <div class="section-head">
-            <h2>Featured <span class="accent">Projects</span></h2>
+      <!-- EDUCATION -->
+      <section class="section section-ruled" id="education">
+        <div class="content-shell">
+          <h2 class="section-title">Education <span>&amp; Learning</span></h2>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="edu-number">01</div>
+              <div>
+                <h3>B.Tech — Artificial Intelligence &amp; ML</h3>
+                <p>Anurag University, Hyderabad · Expected 2028 · CGPA 7.89 / 10</p>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-number">02</div>
+              <div>
+                <h3>Intermediate Education</h3>
+                <p>Trividya Junior College, Hyderabad · 2022 – 2024 · 85.5%</p>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-number">03</div>
+              <div>
+                <h3>Secondary Education (CBSE)</h3>
+                <p>Amrita Vidyalayam, Hyderabad · 2015 – 2022 · 71.3%</p>
+              </div>
+            </div>
           </div>
-          <div class="projects-grid">
-            <article class="project-card">
-              <span class="num">01</span>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section section-ruled" id="projects">
+        <div class="content-shell">
+          <h2 class="section-title">Featured <span>Projects</span></h2>
+          <div class="project-grid">
+            <div class="project-card">
+              <span class="project-number">01</span>
               <h3>AI-Based Medical Diagnosis Assistant</h3>
               <p>
-                AI-powered chatbot for symptom understanding and condition-based medical guidance.
+                AI-powered chatbot using NLP techniques to understand patient symptoms and
+                return condition-based medical responses — bridging the gap between users and
+                basic healthcare insights.
               </p>
               <div class="stack">
-                <span>Python</span>
-                <span>ML</span>
-                <span>NLP</span>
+                <span>Python</span><span>Machine Learning</span><span>NLP</span>
               </div>
-              <a class="project-link" href="https://ai-based-medical-diagnosis-assistant-nsko.onrender.com/" target="_blank" rel="noopener">View Project ↗</a>
-            </article>
-
-            <article class="project-card">
-              <span class="num">02</span>
+              <a class="project-link" href="https://ai-based-medical-diagnosis-assistant-nsko.onrender.com/" target="_blank" rel="noopener">View project details ↗</a>
+            </div>
+            <div class="project-card">
+              <span class="project-number">02</span>
               <h3>DisasterShield</h3>
               <p>
-                Real-time disaster prediction platform with AI analysis and a responsive web interface.
+                Full-stack web application delivering real-time disaster predictions through
+                AI-powered data pattern analysis. Flask backend with an interactive,
+                responsive frontend for emergency insight delivery.
               </p>
               <div class="stack">
-                <span>Python</span>
-                <span>Flask</span>
-                <span>HTML/CSS</span>
+                <span>Python</span><span>Flask</span><span>HTML/CSS</span>
               </div>
-              <a class="project-link" href="https://disastershield-frontend.onrender.com/" target="_blank" rel="noopener">View Project ↗</a>
-            </article>
-
-            <article class="project-card">
-              <span class="num">03</span>
-              <h3>Expense Management</h3>
+              <a class="project-link" href="https://disastershield-frontend.onrender.com/" target="_blank" rel="noopener">View project details ↗</a>
+            </div>
+            <div class="project-card">
+              <span class="project-number">03</span>
+              <h3>Expense Management System</h3>
               <p>
-                Full-stack expense tracker with secure authentication and a clean dashboard for personal finance management.
+                Full-stack expense tracking application with secure authentication, CRUD
+                operations, and a clean dashboard for managing personal finances.
               </p>
               <div class="stack">
-                <span>Java</span>
-                <span>Spring Boot</span>
-                <span>React</span>
+                <span>Java</span><span>Spring Boot</span><span>React</span><span>MySQL</span>
               </div>
-              <a class="project-link" href="https://expense-management-frontend-cmcr.onrender.com" target="_blank" rel="noopener">View Project ↗</a>
-            </article>
-
-            <article class="project-card">
-              <span class="num">04</span>
+              <a class="project-link" href="https://expense-management-frontend-cmcr.onrender.com" target="_blank" rel="noopener">View project details ↗</a>
+            </div>
+            <div class="project-card">
+              <span class="project-number">04</span>
               <h3>Gaming Store (Angular)</h3>
               <p>
-                Modern gaming storefront with responsive UI and a clean browsing experience.
+                A gaming storefront built with Angular — browse games, view details, and
+                explore a responsive UI designed for a modern store experience.
               </p>
               <div class="stack">
-                <span>Angular</span>
-                <span>TypeScript</span>
-                <span>HTML/CSS</span>
+                <span>Angular</span><span>TypeScript</span><span>HTML/CSS</span>
               </div>
-              <a class="project-link" href="https://dhanush7842-developer.github.io/Gaming-store-angular/home" target="_blank" rel="noopener">View Project ↗</a>
-            </article>
+              <a class="project-link" href="https://dhanush7842-developer.github.io/Gaming-store-angular/home" target="_blank" rel="noopener">View project details ↗</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="skills">
-        <div class="container">
-          <div class="section-head">
-            <h2>Skills <span class="accent">&amp; Tech</span></h2>
-          </div>
+      <!-- SKILLS -->
+      <section class="section section-ruled" id="skills">
+        <div class="content-shell">
+          <h2 class="section-title">Skills <span>&amp; Tech</span></h2>
           <div class="skills-grid">
-            <div class="skill-card">
-              <span class="num">01</span>
+            <div class="skill-group">
+              <span class="skill-number">01</span>
               <h3>Languages</h3>
-              <div class="skill-pills">
-                <span>Python</span>
-                <span>Java</span>
-                <span>JavaScript</span>
-                <span>C</span>
-                <span>HTML</span>
-                <span>CSS</span>
+              <div class="pill-list">
+                <span>Python</span><span>Java</span><span>JavaScript</span><span>C</span><span>HTML</span><span>CSS</span>
               </div>
             </div>
-
-            <div class="skill-card">
-              <span class="num">02</span>
-              <h3>AI &amp; ML</h3>
-              <div class="skill-pills">
-                <span>Machine Learning</span>
-                <span>NLP</span>
-                <span>NumPy</span>
-                <span>Pandas</span>
-                <span>Scikit-learn</span>
+            <div class="skill-group">
+              <span class="skill-number">02</span>
+              <h3>AI / Machine Learning</h3>
+              <div class="pill-list">
+                <span>Machine Learning</span><span>NLP</span><span>NumPy</span><span>Pandas</span><span>Scikit-learn</span>
               </div>
             </div>
-
-            <div class="skill-card">
-              <span class="num">03</span>
+            <div class="skill-group">
+              <span class="skill-number">03</span>
               <h3>Frameworks &amp; Databases</h3>
-              <div class="skill-pills">
-                <span>Spring Boot</span>
-                <span>Hibernate</span>
-                <span>Flask</span>
-                <span>React</span>
-                <span>Bootstrap</span>
-                <span>MySQL</span>
+              <div class="pill-list">
+                <span>Spring Boot</span><span>Hibernate</span><span>Flask</span><span>React</span><span>Bootstrap</span><span>MongoDB</span><span>MySQL</span>
               </div>
             </div>
-
-            <div class="skill-card">
-              <span class="num">04</span>
+            <div class="skill-group">
+              <span class="skill-number">04</span>
               <h3>Tools &amp; Concepts</h3>
-              <div class="skill-pills">
-                <span>Git</span>
-                <span>VS Code</span>
-                <span>REST APIs</span>
-                <span>Data Analysis</span>
+              <div class="pill-list">
+                <span>Git</span><span>VS Code</span><span>DSA</span><span>OOP</span><span>REST APIs</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact">
-        <div class="container">
-          <div class="contact-box">
-            <div class="contact-layout">
-              <div>
-                <div class="eyebrow" style="margin-bottom: 18px;">Let’s connect</div>
-                <h3>Let’s build something useful together.</h3>
-                <p>
-                  I’m always open to discussing new projects, creative ideas, or opportunities to build meaningful work.
-                </p>
-              </div>
-
-              <div class="cta-panel">
-                <h4>Ready to start?</h4>
-                <p>Share your idea and I’ll help turn it into a clear, practical solution.</p>
-                <a class="btn btn-primary cta-button" href="mailto:shivapalakurthi69@gmail.com">Send Email</a>
-              </div>
+      <!-- HIGHLIGHTS -->
+      <section class="section section-ruled" id="highlights">
+        <div class="content-shell">
+          <h2 class="section-title">Engineering <span>Highlights</span></h2>
+          <div class="highlights-grid">
+            <div class="highlight-item">
+              <span class="highlight-number">01</span>
+              <h3>200+ DSA Problems</h3>
+              <p>Solved across LeetCode covering all difficulty levels.</p>
             </div>
+            <div class="highlight-item">
+              <span class="highlight-number">02</span>
+              <h3>90% Acceptance Rate</h3>
+              <p>Maintained on LeetCode algorithmic submissions.</p>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-number">03</span>
+              <h3>3+ Internships</h3>
+              <p>Kodbud, EduSkills, and Tata Group (Forage).</p>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-number">04</span>
+              <h3>Hackwar 2K26</h3>
+              <p>Organizing Committee Member at Anurag University.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="content-shell">
+          <div class="contact-block">
+            <h3>Let’s work together.</h3>
+            <p>
+              I’m always open to discussing new projects, creative ideas, or opportunities to
+              build something useful.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:dhanush7842@gmail.com">Email</a>
+              <a href="https://www.linkedin.com/in/mdhanush-engineer/" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/dhanush7842-developer?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <a class="button button-primary" href="mailto:dhanush7842@gmail.com">Send Email</a>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>© <span id="year"></span> M. Dhanush</span>
-        <span>Hyderabad, India</span>
-      </div>
+      <span>© <span id="year"></span> M. Dhanush</span>
+      <span>Hyderabad, India</span>
     </footer>
+  </div>
 
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuToggle = document.getElementById("menuToggle");
+    const desktopNav = document.querySelector(".desktop-nav");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = desktopNav.style.display === "flex";
+      desktopNav.style.display = isOpen ? "" : "flex";
+      desktopNav.style.flexDirection = "column";
+      desktopNav.style.position = "absolute";
+      desktopNav.style.top = "66px";
+      desktopNav.style.left = "0";
+      desktopNav.style.right = "0";
+      desktopNav.style.background = "var(--canvas)";
+      desktopNav.style.padding = "16px 24px";
+      desktopNav.style.borderBottom = "1px solid var(--line)";
+      menuToggle.textContent = isOpen ? "Menu" : "Close";
+    });
+  </script>
+</body>
 </html>
